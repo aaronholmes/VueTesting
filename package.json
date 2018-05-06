@@ -4,7 +4,7 @@
   "description": "Random testing with Vue Js tests.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha-webpack --webpack-config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
     "@vue/test-utils": "^1.0.0-beta.15",
     "mocha": "^5.1.1",
     "mocha-webpack": "^1.1.0",
-    "vue-test-utils": "^1.0.0-beta.11"
+    "vue-test-utils": "^1.0.0-beta.11",
+    "webpack": "^4.7.0"
   },
   "dependencies": {
     "vue": "^2.5.16"
