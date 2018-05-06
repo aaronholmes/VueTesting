@@ -1,0 +1,20 @@
+{
+  "name": "VueTesting",
+  "version": "1.0.0",
+  "description": "Random testing with Vue Js tests.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronholmes/VueTesting.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronholmes/VueTesting/issues"
+  },
+  "homepage": "https://github.com/aaronholmes/VueTesting#readme"
+}
