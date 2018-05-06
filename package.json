@@ -19,6 +19,7 @@
   "homepage": "https://github.com/aaronholmes/VueTesting#readme",
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.15",
+    "expect": "^22.4.3",
     "mocha": "^5.1.1",
     "mocha-webpack": "^1.1.0",
     "vue-test-utils": "^1.0.0-beta.11",
