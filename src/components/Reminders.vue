@@ -4,7 +4,10 @@
         <button @click="addReminder">Add Reminder</button>
 
         <ul v-if="reminders.length">
-            <li v-for="reminder in reminders" v-text="reminder"></li>
+            <li v-for="(reminder, index) in reminders">
+                {{reminder}}
+                <button class="delete" @click="removeReminder(reminder, index)">Remove</button>
+            </li>
         </ul>
     </div>
 </template>
@@ -21,6 +24,9 @@
             addReminder() {
                 this.reminders.push(this.newReminder);
                 this.newReminder = '';
+            },
+            removeReminder(reminder, index) {
+                this.reminders.splice(index, 1);
             }
         }
     }
