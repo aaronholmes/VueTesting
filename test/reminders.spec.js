@@ -23,6 +23,17 @@ describe ('Reminders', () => {
         expect(wrapper.find('ul').text()).toContain(data);
     })
 
+    it ('can delete items', () => {
+        addReminder('reminder 1');
+        addReminder('reminder 2');
+
+        let deleteButton = wrapper.find('ul > li:first-child .delete');
+
+        deleteButton.trigger('click');
+
+        expect(wrapper.find('ul').text()).not.toContain('reminder 1');
+    })
+
     function addReminder(data) {
         let newReminder = wrapper.find('.new-reminder');
 
