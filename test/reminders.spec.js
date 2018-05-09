@@ -3,20 +3,32 @@ import expect  from 'expect';
 import Reminders from '../src/components/Reminders.vue';
 
 describe ('Reminders', () => {
+
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = mount(Reminders);
+    })
+
     it ('hides the reminders list if there are none', () => {
-        let wrapper = mount(Reminders);
         expect(wrapper.contains('ul')).toBe(false);
     });
 
     it ('can add items', () =>{
-        let wrapper = mount(Reminders);
+
+        let data = 'This is a new reminder';
+
+        addReminder(data);
+
+        expect(wrapper.find('ul').text()).toContain(data);
+    })
+
+    function addReminder(data) {
         let newReminder = wrapper.find('.new-reminder');
 
-        newReminder.element.value = "Go to the store";
+        newReminder.element.value = data;
         newReminder.trigger('input');
 
         wrapper.find('button').trigger('click');
-
-        expect(wrapper.find('ul').text()).toContain('Go to the store');
-    })
+    }
 })
