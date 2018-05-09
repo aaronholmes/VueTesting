@@ -32,6 +32,7 @@ describe ('Reminders', () => {
         deleteButton.trigger('click');
 
         expect(wrapper.find('ul').text()).not.toContain('reminder 1');
+        expect(wrapper.find('ul').text()).toContain('reminder 2');
     })
 
     function addReminder(data) {
