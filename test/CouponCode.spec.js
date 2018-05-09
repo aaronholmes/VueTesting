@@ -31,6 +31,6 @@ describe('Coupon Code', () => {
         couponCode.trigger('input');
 
         expect(wrapper.emitted().applied).toBeTruthy();
-        expect(wrapper.emitted().applied[0]).toBe(50);
+        expect(wrapper.emitted().applied[0]).toEqual([50]);
     });
 });

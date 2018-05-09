@@ -36,6 +36,11 @@
             validate() {
                 // Get real coupon codes from server, hardcoded for sample
                 this.valid = this.coupons.map(coupon => coupon.code).includes(this.code);
+
+                if (this.valid) {
+                    let code = this.coupons.find(coupon => coupon.code === this.code);
+                    this.$emit('applied', code.discount);
+                }
             }
         }
     }
