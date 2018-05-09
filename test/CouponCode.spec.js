@@ -15,7 +15,7 @@ describe('Coupon Code', () => {
 
         let couponCode = wrapper.find('input.coupon-code');
 
-        couponCode.element.value = 'moodfasa';
+        couponCode.element.value = 'moofasa';
         couponCode.trigger('input');
 
         expect(wrapper.html()).toContain('50% off');
