@@ -26,20 +26,24 @@ describe('Coupon Code', () => {
 
     it ('broadcasts percentage discount when valid coupon supplied', () => {
         // 1. Drive test through UI
-        //let couponCode = wrapper.find('input.coupon-code');
-
-        //couponCode.element.value = 'moofasa';
-        //couponCode.trigger('input');
+        enterCouponCode('moofasa');
 
         // 2. Or set data and call method directly
 
-        wrapper.setData({
-            code:'moofasa'
-        });
+        //wrapper.setData({
+        //    code:'moofasa'
+        //});
 
-        wrapper.vm.validate();
+        //wrapper.vm.validate();
 
         expect(wrapper.emitted().applied).toBeTruthy();
         expect(wrapper.emitted().applied[0]).toEqual([50]);
     });
+
+    function enterCouponCode(code) {
+        let couponCode = wrapper.find('input.coupon-code');
+
+        couponCode.element.value = code;
+        couponCode.trigger('input');
+    }
 });
