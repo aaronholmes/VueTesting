@@ -9,19 +9,38 @@ describe('Coupon Code', () => {
 
     beforeEach(() => {
         wrapper = mount(CouponCode);
+
+        // Mock out data so not dependant on couponCode / data source
+        wrapper.setData({
+            coupons: [
+                {
+                    code: "moofasa",
+                    message: "50% off",
+                    discount: 50
+                },
+                {
+                    code: "25off",
+                    message: "25% off",
+                    discount: 25
+                },
+            ]
+        });
     })
 
     it ('accepts a coupon code', () => {
         expect(wrapper.contains('input.coupon-code')).toBe(true);
     });
 
-    it ('validates user provided coupon', () => {
-        let couponCode = wrapper.find('input.coupon-code');
-
-        couponCode.element.value = 'moofasa';
-        couponCode.trigger('input');
+    it ('validates correct user provided coupon', () => {
+        enterCouponCode('moofasa');
 
         expect(wrapper.html()).toContain('50% off');
+    });
+
+    it ('invalidates incorrect user provided coupon', () => {
+        enterCouponCode('nogood');
+
+        expect(wrapper.html()).toContain('Invalid coupon code');
     });
 
     it ('broadcasts percentage discount when valid coupon supplied', () => {

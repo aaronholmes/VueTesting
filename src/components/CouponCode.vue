@@ -4,6 +4,9 @@
         <p v-if="valid">
             Coupon redeemed: {{ message }}
         </p>
+        <p v-else>
+            Invalid coupon code
+        </p>
     </div>
 </template>
 
@@ -14,7 +17,7 @@
                 code: '',
                 coupons: [
                     {
-                        code: "moofasa",
+                        code: "50off",
                         message: "50% off",
                         discount: 50
                     },
@@ -32,13 +35,13 @@
                 return this.coupons.find(coupon => coupon.code == this.code);
             },
             message() {
-                return this.selectedCoupon.message;
+                return (this.selectedCoupon) ? this.selectedCoupon.message : '';
             }
         },
         methods: {
             validate() {
                 // Get real coupon codes from server, hardcoded for sample
-                this.valid = this.coupons.map(coupon => coupon.code).includes(this.code);
+                this.valid = !! this.selectedCoupon;
 
                 if (this.valid) {
                     this.$emit('applied', this.selectedCoupon.discount);
