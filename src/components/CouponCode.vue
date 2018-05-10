@@ -28,9 +28,12 @@
             }
         },
         computed:{
-          message() {
-            return this.coupons.find(coupon => coupon.code == this.code).message;
-          }
+            selectedCoupon()    {
+                return this.coupons.find(coupon => coupon.code == this.code);
+            },
+            message() {
+                return this.selectedCoupon.message;
+            }
         },
         methods: {
             validate() {
@@ -38,8 +41,7 @@
                 this.valid = this.coupons.map(coupon => coupon.code).includes(this.code);
 
                 if (this.valid) {
-                    let code = this.coupons.find(coupon => coupon.code === this.code);
-                    this.$emit('applied', code.discount);
+                    this.$emit('applied', this.selectedCoupon.discount);
                 }
             }
         }
